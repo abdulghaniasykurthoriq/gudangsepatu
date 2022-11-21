@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import AddSepatu from './pages/addSepatu'
+import Dashboard from './pages/dashboard'
+import EditSepatu from './pages/editSepatu'
+import Login from './pages/login'
+import NotFound from './pages/notFound'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+
+      <Routes>
+          <Route exact path='/' element={<Login/>} />
+          <Route exact path='/dashboard' element={<Dashboard/>} />
+          <Route exact path='/add' element={<AddSepatu/>} />
+          <Route exact path='/edit/:id' element={<EditSepatu/>} />
+          <Route path='*' element={<NotFound/>}/>
+      </Routes>
+
+    </>
+  )
 }
 
-export default App;
+export default App
