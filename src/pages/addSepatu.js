@@ -33,12 +33,8 @@ function AddSepatu() {
       stock
     }
 
-       axios.post('https://gudangsepatu.herokuapp.com/api',payload,
-       {
-        headers:{
-          'content-type':'multipart/form-data'
-        }
-       }
+       axios.post('https://gudangsepatu.herokuapp.com/api',payload
+
        ).then(response=>{
         history('/dashboard')
        }).catch(

@@ -14,7 +14,7 @@ function Dashboard() {
     if(!(localStorage.getItem('token')) === true){
       history('/')
     }
-    axios.get('http://localhost:3001/api',{headers:{'Authorization':header}})
+    axios.get('https://gudangsepatu.herokuapp.com/api',{headers:{'Authorization':header}})
     .then(result => {
       setData(result.data)
     })
