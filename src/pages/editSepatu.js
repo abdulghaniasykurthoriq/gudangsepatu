@@ -19,7 +19,7 @@ function EditSepatu() {
         history('/')
       }
       if(id){
-        axios.get('http://localhost:3001/api/'+id, {headers:{'Authorization':header}})
+        axios.get('https://gudangsepatu.herokuapp.com/api/'+id, {headers:{'Authorization':header}})
         .then((response) => {
           const {data} = response;
           setNama(data.nama)
@@ -45,7 +45,7 @@ function EditSepatu() {
       jenis,
       stock
     }
-       axios.patch(`http://localhost:3001/api/${id}`,payload)
+       axios.patch(`https://gudangsepatu.herokuapp.com/api/${id}`,payload)
        .then(response => {
           history('/dashboard')
        })

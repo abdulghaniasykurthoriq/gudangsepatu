@@ -32,16 +32,8 @@ function AddSepatu() {
       jenis,
       stock
     }
-    // const data = new FormData();
-    // data.append('nama', nama),
-    // data.append('warna', warna),
-    // data.append('ukuran', ukuran),
-    // data.append('bahan', bahan),
-    // data.append('jenis', jenis),
-    // data.append('stock', stock),
-    // data.append('image', image),
 
-       axios.post('http://localhost:3001/api',payload,
+       axios.post('https://gudangsepatu.herokuapp.com/api',payload,
        {
         headers:{
           'content-type':'multipart/form-data'

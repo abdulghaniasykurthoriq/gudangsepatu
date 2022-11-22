@@ -28,7 +28,7 @@ function Dashboard() {
   },[history])
 
   const handleDelete = (id) => {
-     axios.delete('http://localhost:3001/api/'+id)
+     axios.delete('https://gudangsepatu.herokuapp.com/api/'+id)
     .then(result => {
       
     })

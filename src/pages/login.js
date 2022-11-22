@@ -11,7 +11,7 @@ function Login() {
   const onSubmit = async(e) =>{
       e.preventDefault()
       try {
-        await axios.post('http://localhost:3001/api/user',payload)
+        await axios.post('https://gudangsepatu.herokuapp.com/api/user',payload)
         .then(result => {
           localStorage.setItem('token',result.data.accessToken);
           localStorage.setItem('user',JSON.stringify(result.data.user));
