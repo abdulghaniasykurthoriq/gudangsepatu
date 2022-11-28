@@ -19,7 +19,7 @@ function App() {
           <Route exact path='/dashboard' element={<Dashboard/>} />
           <Route exact path='/add' element={<AddSepatu/>} />
           <Route exact path='/edit/:id' element={<EditSepatu/>} />
-          <Route exact path='/out' element={<OutSepatu/>} />
+          <Route exact path='/out/:id' element={<OutSepatu/>} />
           <Route exact path='/history' element={<HistorySepatu/>} />
           <Route path='*' element={<NotFound/>}/>
       </Routes>

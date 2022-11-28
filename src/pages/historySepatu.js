@@ -44,7 +44,7 @@ function HistorySepatu() {
           data.map(history => {
             return(
               <div key={history._id} className="alert alert-primary" role="alert">
-         Sepatu adidas {history.status} dari {history.dari} ke {history.untuk}
+         Sepatu {history.status} dari {history.dari} ke {history.untuk}
          sebanyak {history.total_sepatu}
         </div>
             )
@@ -58,7 +58,7 @@ function HistorySepatu() {
          sebanyak 2000
         </div> */}
 
-        
+
 {/* <div className="alert alert-secondary" role="alert">
   A simple secondary alert—check it out!
 </div>

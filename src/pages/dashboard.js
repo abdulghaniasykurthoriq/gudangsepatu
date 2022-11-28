@@ -66,7 +66,7 @@ function Dashboard() {
                                   <button onClick={(e) => handleDelete(sepatu._id)} className="btn btn-danger">
                                     <Trash2Fill/>
                                   </button>
-                                  <Link to={'/edit/'+ sepatu._id }><button type="button" className="btn btn-success"><SendCheckFill/></button></Link> 
+                                  <Link to={'/out/'+ sepatu._id }><button type="button" className="btn btn-success"><SendCheckFill/></button></Link> 
                               </td>
                             </tr>
                             

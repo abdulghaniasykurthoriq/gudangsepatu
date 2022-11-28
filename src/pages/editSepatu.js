@@ -45,7 +45,7 @@ function EditSepatu() {
       jenis,
       stock
     }
-       axios.patch(`https://gudangsepatu.herokuapp.com/api/${id}`,payload)
+       axios.patch(`https://gudangsepatu.herokuapp.com/api/sepatu/${id}`,payload)
        .then(response => {
           history('/dashboard')
        })
