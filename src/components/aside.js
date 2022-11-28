@@ -26,7 +26,17 @@ function Aside({isActive}) {
               </li>
               <li>
                 <Link to="/add" className={`${isActive === 2 ? 'active' : '' } nav-link `}>
-                  Tambah
+                  Add
+                </Link>
+              </li>
+              <li>
+                <Link to="/out" className={`${isActive === 3 ? 'active' : '' } nav-link `}>
+                  Out
+                </Link>
+              </li>
+              <li>
+                <Link to="/history" className={`${isActive === 4 ? 'active' : '' } nav-link `}>
+                  History
                 </Link>
               </li>
             </ul>
