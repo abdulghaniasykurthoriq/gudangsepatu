@@ -3,6 +3,7 @@ import Header from '../components/header'
 import Aside from '../components/aside'
 import { Link, useNavigate, redirect } from 'react-router-dom'
 import axios from 'axios'
+import { PencilSquare, SendCheckFill, Trash2Fill } from 'react-bootstrap-icons'
 
 function Dashboard() {
   let angka = 0;
@@ -14,7 +15,7 @@ function Dashboard() {
     if(!(localStorage.getItem('token')) === true){
       history('/')
     }
-    axios.get('https://gudangsepatu.herokuapp.com/api',{headers:{'Authorization':header}})
+    axios.get('https://gudangsepatu.herokuapp.com/api/sepatu',{headers:{'Authorization':header}})
     .then(result => {
       setData(result.data)
     })
@@ -28,7 +29,7 @@ function Dashboard() {
   },[history])
 
   const handleDelete = (id) => {
-     axios.delete('https://gudangsepatu.herokuapp.com/api/'+id)
+     axios.delete('https://gudangsepatu.herokuapp.com/api/sepatu'+id)
     .then(result => {
       
     })
@@ -60,8 +61,12 @@ function Dashboard() {
                               <td>{sepatu.nama}</td>
                               <td>{sepatu.ukuran}</td>
                               <td>
-                                  <Link to={'/edit/'+ sepatu._id }><button type="button" className="btn btn-primary">Edit</button></Link> 
-                                  <button onClick={(e) => handleDelete(sepatu._id)} className="btn btn-danger">Delete</button>
+                                
+                                  <Link to={'/edit/'+ sepatu._id }><button type="button" className="btn btn-primary"><PencilSquare/></button></Link> 
+                                  <button onClick={(e) => handleDelete(sepatu._id)} className="btn btn-danger">
+                                    <Trash2Fill/>
+                                  </button>
+                                  <Link to={'/edit/'+ sepatu._id }><button type="button" className="btn btn-success"><SendCheckFill/></button></Link> 
                               </td>
                             </tr>
                             

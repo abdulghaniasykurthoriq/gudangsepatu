@@ -19,7 +19,7 @@ function EditSepatu() {
         history('/')
       }
       if(id){
-        axios.get('https://gudangsepatu.herokuapp.com/api/'+id, {headers:{'Authorization':header}})
+        axios.get('https://gudangsepatu.herokuapp.com/api/sepatu/'+id, {headers:{'Authorization':header}})
         .then((response) => {
           const {data} = response;
           setNama(data.nama)

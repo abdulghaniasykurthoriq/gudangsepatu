@@ -3,10 +3,13 @@ import Header from '../components/header'
 import Aside from '../components/aside'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import uuid from 'react-uuid';
+
 
 function AddSepatu() {
    
     const [nama, setNama] = useState('')
+    const [asal, setAsal] = useState('')
     const [warna, setWarna] = useState('')
     const [ukuran, setUkuran] = useState(0)
     const [bahan, setBahan] = useState('')
@@ -15,6 +18,7 @@ function AddSepatu() {
     const history = useNavigate();
     
     useEffect(() => {
+        console.log('uuid()', uuid());
       // const header = `${localStorage.getItem('token')}`
       if(!(localStorage.getItem('token')) === true){
         history('/')
@@ -23,8 +27,10 @@ function AddSepatu() {
 
   const onSubmit = (e) =>{
     
+    const _id  = uuid();
     e.preventDefault()
     const payload = {
+      _id,
       nama,
       warna,
       ukuran,
@@ -33,9 +39,16 @@ function AddSepatu() {
       stock
     }
 
-       axios.post('https://gudangsepatu.herokuapp.com/api',payload
-
+       axios.post('https://gudangsepatu.herokuapp.com/api/sepatu',payload
        ).then(response=>{
+        axios.post('https://gudangsepatu.herokuapp.com/api/history',{
+         sepatu_id:_id,
+         status:'MASUK',
+         dari:asal,
+         untuk:'gudang',
+         total_sepatu:stock,
+         tanggal: new Date() 
+        })
         history('/dashboard')
        }).catch(
         history('/dashboard')
@@ -51,14 +64,20 @@ function AddSepatu() {
         <Aside isActive={2}/>
         <div class="w-100 d-flex flex-column align-items-center">
         <Header fix={true}/>
-    <div style={{height:"100vh",display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+    <div style={{height:"100vh",display:"flex",flexDirection:"column", alignItems:"center"}}>
         
-        <div className="border p-4 " style={{width:'500px'}}>
+        <div className="border p-4" style={{width:'500px', marginTop:'100px'}}>
         
         <form id="myForm" onSubmit={onSubmit}>
-        {/* <input type="file" onChange={(e) => setImage(e.target.files[0])}  /> */}
-                {/* <UploadImage onChange={(e) => setImage(e)} img={imagePreview}/> */}
+
                 <div className="mb-3">
+                  <label  className="form-label">Asal</label>
+                  <input onChange={(e) => setAsal(e.target.value) } className="form-control"/>
+                </div>
+                {asal == '' && <div class="alert alert-warning" role="alert">Yuk isi dulu darimanana sepatunya berasal...</div>}
+                {asal !== '' && 
+                  <>
+                    <div className="mb-3">
                   <label  className="form-label">Nama</label>
                   <input onChange={(e) => setNama(e.target.value) } className="form-control"/>
                 </div>
@@ -84,6 +103,10 @@ function AddSepatu() {
                 </div>
                 
                 <button type="submit" className="btn btn-primary">Tambah</button>
+                  </>
+                
+                }
+                
               </form>
         </div>
 
